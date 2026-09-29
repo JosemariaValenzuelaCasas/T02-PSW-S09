@@ -39,17 +39,17 @@ pipeline {
             echo "BUILD SUCCESS: Todas las pruebas pasaron correctamente."
             echo "Job: ${env.JOB_NAME} | Build: #${env.BUILD_NUMBER} | Resultado: SUCCESS"
             
-            // NOTIFICACIÓN A SLACK (Requiere el plugin 'Slack Notification' en Jenkins)
-            // Descomenta la siguiente línea cuando configures el plugin de Slack en Jenkins:
-            // slackSend channel: env.SLACK_CHANNEL, color: 'good', message: "BUILD SUCCESS\nJob: ${env.JOB_NAME}\nBuild: #${env.BUILD_NUMBER}\nResultado: SUCCESS"
+            slackSend channel: env.SLACK_CHANNEL, 
+                      color: 'good', 
+                      message: "*BUILD SUCCESS*\n*Job:* ${env.JOB_NAME}\n*Build:* #${env.BUILD_NUMBER}\n*Resultado:* SUCCESS"
         }
         failure {
             echo "BUILD FAILURE: Se presentaron fallos en la compilacion o en las pruebas."
             echo "Job: ${env.JOB_NAME} | Build: #${env.BUILD_NUMBER} | Resultado: FAILURE"
             
-            // NOTIFICACIÓN A SLACK (Requiere el plugin 'Slack Notification' en Jenkins)
-            // Descomenta la siguiente línea cuando configures el plugin de Slack en Jenkins:
-            // slackSend channel: env.SLACK_CHANNEL, color: 'danger', message: "BUILD FAILURE\nJob: ${env.JOB_NAME}\nBuild: #${env.BUILD_NUMBER}\nResultado: FAILURE"
+            slackSend channel: env.SLACK_CHANNEL, 
+                      color: 'danger', 
+                      message: "*BUILD FAILURE*\n*Job:* ${env.JOB_NAME}\n*Build:* #${env.BUILD_NUMBER}\n*Resultado:* FAILURE"
         }
     }
 }
