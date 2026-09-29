@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        // Canal de Slack donde se enviarán las notificaciones
-        SLACK_CHANNEL = '#general'
+        // Canal de Slack oficial del equipo
+        SLACK_CHANNEL = '#s9_jenkins-slack'
     }
 
     stages {
